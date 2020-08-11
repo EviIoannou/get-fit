@@ -14,20 +14,15 @@
       </p>
       
     </div>
- <foodCard></foodCard>
+
   </div>
 </template>
 
 <script>
-import foodCard from './foodCard.vue'
+
 export default {
-  created() {
-  console.log(this.$store.state.foods)
-},
   name: 'Intro',
-  components: {
-    foodCard
-  },
+  
   props: {
     msg: String
   }

@@ -2,6 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/silhouette.png" class="cover">
     <Intro msg="Get Fit"/>
+   
   </div>
 </template>
 

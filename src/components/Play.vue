@@ -5,7 +5,7 @@
     <header>
       <p>Energy points : {{energy}}</p>
       <p>Health points : {{health}}</p>
-      <p><button @click="restart()"> Restart game </button></p>
+      <p><button @click="restart()" class="restart"> Restart game </button></p>
     </header>
     <section class="all-cards">
         <div class="foods">
@@ -84,6 +84,7 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: center;
+        align-items: center;
         background-color: rgb(65, 224, 224);
         color: rgb(54, 52, 52);
         font-weight:bolder
@@ -111,7 +112,7 @@ export default {
         height : 70vh
     }
 
-    .food-card:hover{
+    .food-card:hover, .training-card:hover{
         cursor: pointer;
     }
 
@@ -119,4 +120,12 @@ export default {
       height: 8em
     }
    
+   .restart{
+     border: 1px solid rgb(2, 2, 46);
+     border-radius: 0.5em;
+     padding: 0.5em;
+     background-color: white;
+     color: rgb(2, 2, 46);
+
+   }
 </style>

@@ -2,6 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
+      <router-link to="/rules">Rules</router-link> |
+      <router-link to="/play">Play</router-link> |
       <router-link to="/about">About us</router-link>|
       <router-link to="/story">The story behind</router-link>
     </div>
@@ -25,6 +27,7 @@
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
 }
 
 #nav a.router-link-exact-active {

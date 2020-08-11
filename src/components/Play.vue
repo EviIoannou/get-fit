@@ -1,7 +1,10 @@
 <template>
   <main>
+    <!-- These components are used to 'populate' the card decks -->
     <trainingCard />
     <foodCard />
+    <!-- ---- -->
+
     <header>
       <p>Energy points : {{energy}}</p>
       <p>Health points : {{health}}</p>
@@ -18,7 +21,7 @@
         <div class="trainings">
             <div v-for="card in $store.state.trainings" :key='card.name'  class="training-card" @click="changeStats(card)">
               <h3>{{ card.name }}</h3>
-              <p><img :src="'/images/' + card.pic " alt="food-pic" class="pic"></p>
+              <p><img :src="'/images/' + card.pic " alt="training-pic" class="pic"></p>
               <p>Energy: {{ card.energy }}</p>
             </div>
         </div>
@@ -126,6 +129,7 @@ export default {
      padding: 0.5em;
      background-color: white;
      color: rgb(2, 2, 46);
+     cursor: pointer;
 
    }
 </style>

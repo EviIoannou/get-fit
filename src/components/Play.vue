@@ -1,9 +1,5 @@
 <template>
   <main>
-    <!-- These components are used to 'populate' the card decks -->
-    <trainingCard />
-    <foodCard />
-    <!-- ---- -->
 
     <header>
       <p>Energy points : {{energy}}</p>
@@ -32,8 +28,7 @@
 </template>
 
 <script>
-import foodCard from './foodCard.vue'
-import trainingCard from './trainingCard.vue'
+
 
 export default {
   data : function (){
@@ -69,16 +64,10 @@ export default {
 },
 
   mounted () {
-    console.log(this.$store.state.trainings)
-    console.log(this.$store.state.foods)
     console.log(this.index1 + ' ' + this.index2)
 
 },
-  name: 'Play',
-  components: {
-    foodCard,
-    trainingCard
-  }
+  name: 'Play'
 }
 </script>
 

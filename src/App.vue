@@ -8,8 +8,26 @@
       <router-link to="/story">The story behind</router-link>
     </div>
     <router-view/>
+
+    <!-- These components are used to 'populate' the card decks -->
+    <trainingCard />
+    <foodCard />
+    <!-- ---- -->
+
   </div>
 </template>
+
+<script>
+import foodCard from './components/foodCard.vue'
+import trainingCard from './components/trainingCard.vue'
+
+export default{
+    components: {
+    foodCard,
+    trainingCard
+  }
+}
+</script>
 
 <style>
 #app {

@@ -26,7 +26,7 @@ export default {
       this.pic = pic;
     }
   },
-  mounted(){
+  created(){
     this.foods=[
         this.kebabPizza = new this.foodCard('Kebab pizza', -15, -5, -5, -5, 10, 'kebab-pizza.jpg'),
         this.thaiSoup = new this.foodCard('Coconut thai soup', 0, 0, 3, -3, 3, 'thai-soup.jpg'),

@@ -24,7 +24,7 @@ export default {
 }
     },
 
-  mounted(){
+  created(){
     this.trainings = [
           this.soccer = new this.trainingCard ('Football', 12, -4, 'football.jpg'),
           this.swimming = new this.trainingCard ('Swimming', 15, -7, 'swimming.jpg'),

@@ -12,6 +12,15 @@ export default new Vuex.Store({
     counter : 0
   },
   mutations: {
+    populateDeck(state, payload){
+      if (payload.deck === 'foods')  {
+        state.foods = payload.values
+      }
+      else if(payload.deck === 'trainings') {
+        state.trainings = payload.values
+      }
+
+    },
     change(state, payload) {
         state.energyPoints += payload.energy;
         state.healthPoints += payload.hp;

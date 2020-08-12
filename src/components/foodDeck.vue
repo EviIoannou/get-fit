@@ -35,7 +35,7 @@ export default {
         this.chickenCasserole = new this.foodCard('Casserole wtih chicken', 11, 5, 1, 5, 8, 'casserole.jpg')
     ]
     
-    this.$store.state.foods = this.foods
+    this.$store.commit({type: 'populateDeck', deck: 'foods', values: this.foods})
 
       console.log(this.$store.state.foods)
     },

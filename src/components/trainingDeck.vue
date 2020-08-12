@@ -33,7 +33,10 @@ export default {
           this.volleyball = new this.trainingCard ('Volleyball', 13, -4, 'volleyball.jpg')
     ]
 
-      this.$store.state.trainings = this.trainings
+
+
+      this.$store.commit({type: 'populateDeck', deck: 'trainings', values: this.trainings})
+    
       console.log(this.$store.state.trainings)
 
     },

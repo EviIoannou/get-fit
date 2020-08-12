@@ -10,21 +10,21 @@
     <router-view/>
 
     <!-- These components are used to 'populate' the card decks -->
-    <trainingCard />
-    <foodCard />
+    <trainingDeck />
+    <foodDeck />
     <!-- ---- -->
 
   </div>
 </template>
 
 <script>
-import foodCard from './components/foodCard.vue'
-import trainingCard from './components/trainingCard.vue'
+import foodDeck from './components/foodDeck.vue'
+import trainingDeck from './components/trainingDeck.vue'
 
 export default{
     components: {
-    foodCard,
-    trainingCard
+    foodDeck,
+    trainingDeck
   }
 }
 </script>

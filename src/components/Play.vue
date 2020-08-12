@@ -7,20 +7,16 @@
       <p><button @click="restart()" class="restart"> Restart game </button></p>
     </header>
     <section class="all-cards">
-        <div class="foods">
-            <div v-for="card in $store.state.foods" :key='card.name'  class="food-card" @click="changeStats(card)">
-              <h3>{{ card.name }}</h3>
-              <p><img :src="'/images/' + card.pic " alt="food-pic" class="pic"></p>
-              <p>Energy: {{ card.energy }}</p>
-            </div>
+
+        <div class="foods" v-if="$store.state.foods.length>0">
+            <FoodCard @clickCard='changeStats'/>
+            <FoodCard @clickCard='changeStats'/>
         </div>
-        <div class="trainings">
-            <div v-for="card in $store.state.trainings" :key='card.name'  class="training-card" @click="changeStats(card)">
-              <h3>{{ card.name }}</h3>
-              <p><img :src="'/images/' + card.pic " alt="training-pic" class="pic"></p>
-              <p>Energy: {{ card.energy }}</p>
-            </div>
+        <div class="trainings" v-if="$store.state.trainings.length>0">
+            <TrainingCard @clickCard='changeStats'/>
+            <TrainingCard @clickCard='changeStats'/>
         </div>
+
     </section>
     
     
@@ -29,14 +25,11 @@
 
 <script>
 
+import FoodCard from '../components/FoodCard'
+import TrainingCard from '../components/TrainingCard'
 
 export default {
-  data : function (){
-    return{
-     index1: Math.floor(Math.random() * this.$store.state.foods.length), 
-     index2: Math.floor(Math.random() * this.$store.state.foods.length)
-    }
-  },
+
   computed: {
       energy (){
         return this.$store.state.energyPoints},
@@ -44,7 +37,8 @@ export default {
         return this.$store.state.healthPoints},
       counter () {
         return this.$store.state.counter
-      }
+      },
+
   },
   methods : {
       changeStats: function (card) { 
@@ -64,13 +58,28 @@ export default {
 },
 
   mounted () {
-    console.log(this.index1 + ' ' + this.index2)
+    console.log(this.$store.state.foods.length)
+    console.log(this.foodOneIndex + ' ' + this.foodTwoIndex)
 
 },
-  name: 'Play'
+  name: 'Play',
+  components: {
+    FoodCard,
+    TrainingCard
+  }
+    
 }
 </script>
 
+<style>
+    .food-card:hover, .training-card:hover{
+        cursor: pointer;
+    }
+
+    .pic{
+      height: 8em
+    }
+</style>
 <style scoped>
     header {
         display: flex;
@@ -104,13 +113,7 @@ export default {
         height : 70vh
     }
 
-    .food-card:hover, .training-card:hover{
-        cursor: pointer;
-    }
-
-    .pic{
-      height: 8em
-    }
+  
    
    .restart{
      border: 1px solid rgb(2, 2, 46);

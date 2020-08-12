@@ -1,44 +1,31 @@
 <template>
-<div></div>
+  <div v-if="foodIndex>=0" class="food-card" @click="send(food)">
+    <h3>{{food.name}}</h3>
+    <p><img :src="'/images/' + food.pic " alt="food-pic" class="pic"></p>
+    <p>Energy: {{ food.energy }}</p>
+  </div>
 </template>
-  
+
 <script>
 export default {
-  data: function () {
-      return {
-          kebabPizza : null,
-          thaiSoup : null,
-          veganTofu : null,
-          baconOmelet : null,
-          chickenCasserole : null,
-          foods : []
-      }
+  computed: {
+    foodIndex(){
+        if (this.$store.state.foods.length > 0) { 
+          let index = Math.floor(Math.random() * this.$store.state.foods.length)
+          return index} else { return null}
+      },
+      food(){
+        let card = this.$store.state.foods.find(f => this.$store.state.foods.indexOf(f) === this.foodIndex)
+        return card;
+      },
   },
-
-  methods: {
-    foodCard(name, hp, protein, fat, carbs, energy, pic){
-      this.name = name;
-      this.hp = hp;
-      this.protein = protein;
-      this.fat = fat;
-      this.carbs = carbs;
-      this.energy = energy;
-      this.pic = pic;
+  methods : {
+    send(card){
+      this.$emit('clickCard', card)
     }
   },
-  created(){
-    this.foods=[
-        this.kebabPizza = new this.foodCard('Kebab pizza', -15, -5, -5, -5, 10, 'kebab-pizza.jpg'),
-        this.thaiSoup = new this.foodCard('Coconut thai soup', 0, 0, 3, -3, 3, 'thai-soup.jpg'),
-        this.veganTofu = new this.foodCard('Vegan Tofu and Rice Salad', 15, 5, 5, 5, 10, 'tofu-rice.jpg'),
-        this.baconOmelet = new this.foodCard('Bacon, patty and omelet', -1, -4, -1, 4, 5, 'omelette.jpg'),
-        this.chickenCasserole = new this.foodCard('Casserole wtih chicken', 11, 5, 1, 5, 8, 'casserole.jpg')
-    ]
-    
-    this.$store.state.foods = this.foods
-
-      console.log(this.$store.state.foods)
-    },
-  name: 'foodCard'
+  name: 'FoodCard',
+ 
+ 
 }
 </script>

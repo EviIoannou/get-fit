@@ -1,42 +1,31 @@
 <template>
-  <div></div>
+  <div v-if="trainingIndex>=0" class="training-card" @click="send(training)">
+    <h3>{{training.name}}</h3>
+    <p><img :src="'/images/' + training.pic " alt="training-pic" class="pic"></p>
+    <p>Energy: {{ training.energy }}</p>
+  </div>
 </template>
+
 <script>
-
 export default {
-  data : function(){
-      return {
-          soccer: null,
-          swimming : null,
-          judo : null,
-          hiking : null,
-          volleyball : null,
-          trainings : []
-  }
+  computed: {
+    trainingIndex(){
+        if (this.$store.state.trainings.length > 0) { 
+          let index = Math.floor(Math.random() * this.$store.state.trainings.length)
+          return index} else { return null}
+      },
+      training(){
+        let card = this.$store.state.trainings.find(f => this.$store.state.trainings.indexOf(f) === this.trainingIndex)
+        return card;
+      },
   },
-
-   methods: {
-    trainingCard (name, hp, energy, pic){
-    this.name = name;
-    this.hp = hp;
-    this.energy = energy;
-    this.pic = pic;
-}
-    },
-
-  created(){
-    this.trainings = [
-          this.soccer = new this.trainingCard ('Football', 12, -4, 'football.jpg'),
-          this.swimming = new this.trainingCard ('Swimming', 15, -7, 'swimming.jpg'),
-          this.judo = new this.trainingCard ('Judo', 11, -3, 'judo.jpg'),
-          this.hiking = new this.trainingCard ('Hiking', 9, -2, 'hiking.jpg'),
-          this.volleyball = new this.trainingCard ('Volleyball', 13, -4, 'volleyball.jpg')
-    ]
-
-      this.$store.state.trainings = this.trainings
-      console.log(this.$store.state.trainings)
-
-    },
-  name: 'trainingCard'
+  methods : {
+    send(card){
+      this.$emit('clickCard', card)
+    }
+  },
+  name: 'TrainingCard',
+ 
+ 
 }
 </script>

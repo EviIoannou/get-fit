@@ -19,7 +19,7 @@
 
     </section>
     
-    
+
   </main>
 </template>
 
@@ -57,11 +57,6 @@ export default {
             this.$store.commit('restart')}
 },
 
-  mounted () {
-    console.log(this.$store.state.foods.length)
-    console.log(this.foodOneIndex + ' ' + this.foodTwoIndex)
-
-},
   name: 'Play',
   components: {
     FoodCard,

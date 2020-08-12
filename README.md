@@ -1,24 +1,7 @@
 # get-fit
 
-## Project setup
-```
-npm install
-```
+## Project description 
+Welcome to 'Get Fit'! An easy game to help you get to know your nutrition and training routines better. How well do you know your food? Is it as healthy as you think? 
+Which type of training is it better for you based on energy your food gives you? Find out by playing 'Get Fit'!
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

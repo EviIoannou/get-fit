@@ -9,6 +9,7 @@
 <script>
 export default {
   computed: {
+    
     trainingIndex(){
         if (this.$store.state.trainings.length > 0) { 
           let index = Math.floor(Math.random() * this.$store.state.trainings.length)
@@ -21,7 +22,14 @@ export default {
   },
   methods : {
     send(card){
-      this.$emit('clickCard', card)
+      if ( this.$store.state.energyPoints < Math.abs(card.energy) ){
+        console.log('You need to eat before you can train!')
+        return null
+      }
+      else {
+      this.$emit('clickCard', card) 
+      }
+      
     }
   },
   name: 'TrainingCard',

@@ -29,5 +29,8 @@
   },
   "proxy": "http://localhost:8080",
   "postinstall": "npm run build",
-"start": "node server.js"
+  "start": "node server.js",
+  "resolutions": { "eslint-loader": "2.1.2" }
+
+
 }

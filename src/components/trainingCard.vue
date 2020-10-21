@@ -32,7 +32,7 @@ export default {
       
     }
   },
-  name: 'TrainingCard',
+  name: 'trainingCard',
  
  
 }

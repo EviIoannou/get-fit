@@ -24,7 +24,7 @@ export default {
       this.$emit('clickCard', card)
     }
   },
-  name: 'FoodCard',
+  name: 'foodCard',
  
  
 }

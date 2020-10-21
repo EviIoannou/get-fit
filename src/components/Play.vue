@@ -9,12 +9,12 @@
     <section class="all-cards">
 
         <div class="foods" v-if="$store.state.foods.length>0">
-            <FoodCard @clickCard='changeStats'/>
-            <FoodCard @clickCard='changeStats'/>
+            <foodCard @clickCard='changeStats'/>
+            <foodCard @clickCard='changeStats'/>
         </div>
         <div class="trainings" v-if="$store.state.trainings.length>0">
-            <TrainingCard @clickCard='changeStats'/>
-            <TrainingCard @clickCard='changeStats'/>
+            <trainingCard @clickCard='changeStats'/>
+            <trainingCard @clickCard='changeStats'/>
         </div>
 
     </section>
@@ -25,8 +25,8 @@
 
 <script>
 
-import FoodCard from '../components/FoodCard'
-import TrainingCard from '../components/TrainingCard'
+import foodCard from '../components/foodCard'
+import trainingCard from '../components/trainingCard'
 
 export default {
 
@@ -59,8 +59,8 @@ export default {
 
   name: 'Play',
   components: {
-    FoodCard,
-    TrainingCard
+    foodCard,
+    trainingCard
   }
     
 }

@@ -7,34 +7,37 @@
 </template>
 
 <script>
-export default {
-  created(){
-      this.index = Math.floor(Math.random() * this.$store.state.trainings.length)
-  },
+  export default {
+    created() {
+      this.index = this.getRandomIndex()
+    },
 
-  computed: {
-      training(){
+    computed: {
+      training() {
         let card = this.$store.state.trainings.find(t => this.$store.state.trainings.indexOf(t) === this.index)
         return card;
       },
-  },
-   data() {
-    return {
-      index: null
-    }
-  },
-  methods : {
-    send(card){
-      if ( this.$store.state.energyPoints < Math.abs(card.energy) ){
-        console.log('You need to eat before you can train!')
-        return null
-      }
-      else {
-      this.$emit('clickCard', card) 
-      this.index = Math.floor(Math.random() * this.$store.state.trainings.length)
+    },
+    data() {
+      return {
+        index: null
       }
     },
-    name: 'trainingCard'
+    methods: {
+      getRandomIndex() {
+        let index = Math.floor(Math.random() * this.$store.state.trainings.length)
+        return index
+      },
+      send(card) {
+        if (this.$store.state.energyPoints < Math.abs(card.energy)) {
+          console.log('You need to eat before you can train!')
+          return null
+        } else {
+          this.$emit('clickCard', card)
+          this.index = this.getRandomIndex()
+        }
+      },
+      name: 'trainingCard'
+    }
   }
-}
 </script>

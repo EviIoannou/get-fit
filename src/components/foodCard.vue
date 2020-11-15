@@ -9,7 +9,7 @@
 <script>
 export default {
   created(){
-      this.index = Math.floor(Math.random() * this.$store.state.foods.length)
+      this.index = this.getRandomIndex()
   },
 
   computed: {
@@ -25,9 +25,14 @@ export default {
     }
   },
   methods : {
+    getRandomIndex(){
+      let index = Math.floor(Math.random() * this.$store.state.foods.length)
+      return index
+    },
+
     send(card){
       this.$emit('clickCard', card)
-      this.index = Math.floor(Math.random() * this.$store.state.foods.length)
+      this.index = this.getRandomIndex()
     }
   },
   name: 'foodCard'

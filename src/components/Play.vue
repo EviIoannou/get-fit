@@ -7,20 +7,20 @@
     </header>
     <section class="all-cards" v-if="!gameIsOver">
 
-        <div class="foods" v-if="$store.state.foods.length>0">
-            <foodCard @clickCard='changeStats'/>
-            <foodCard @clickCard='changeStats'/>
-        </div>
-        <div class="trainings" v-if="$store.state.trainings.length>0">
-            <trainingCard @clickCard='changeStats'/>
-            <trainingCard @clickCard='changeStats'/>
-        </div>
+      <div class="foods" v-if="$store.state.foods.length>0">
+        <foodCard @clickCard='changeStats' />
+        <foodCard @clickCard='changeStats' />
+      </div>
+      <div class="trainings" v-if="$store.state.trainings.length>0">
+        <trainingCard @clickCard='changeStats' />
+        <trainingCard @clickCard='changeStats' />
+      </div>
 
     </section>
     <section v-else>
       <p> Game is over! </p>
     </section>
-    
+
 
   </main>
 </template>
@@ -29,49 +29,55 @@
   import foodCard from '../components/foodCard'
   import trainingCard from '../components/trainingCard'
 
-export default {
-  data() { 
-    return{
-      gameIsOver: false
-    }
-  },
-  computed: {
-      energy (){
-        return this.$store.state.energyPoints},
-      health () {
-        return this.$store.state.healthPoints},
-      counter () {
+  export default {
+    data() {
+      return {
+        gameIsOver: false
+      }
+    },
+    computed: {
+      energy() {
+        return this.$store.state.energyPoints
+      },
+      health() {
+        return this.$store.state.healthPoints
+      },
+      counter() {
         return this.$store.state.counter
       }
     },
 
 
-  methods : {
-      changeStats(card) { 
-          if(this.counter < 5){
-              this.$store.commit('change', card) 
-              console.log(this.$store.state.energyPoints)
-              console.log(this.$store.state.healthPoints)
-              console.log(this.$store.state.counter)
+    methods: {
+      changeStats(card) {
+        if (this.counter < 5) {
+          this.$store.commit('change', card)
+          console.log(this.$store.state.energyPoints)
+          console.log(this.$store.state.healthPoints)
+          console.log(this.$store.state.counter)
 
-          } else {
-              this.gameOver()
-          }
-        }, 
-        gameOver() {
-          this.gameIsOver = true
-        },
-        restart() { 
-          this.$store.commit('restart')
-          this.gameIsOver = false
+        } else {
+          this.gameOver()
         }
-},
-  name: 'Play',
-  components: {
-    foodCard,
-    trainingCard
+      },
+      gameOver() {
+        this.gameIsOver = true
+      },
+      reloadPage() {
+        window.location.reload()
+      },
+      restart() {
+        this.$store.commit('restart')
+        this.gameIsOver = false
+        this.reloadPage()
+      }
+    },
+    name: 'Play',
+    components: {
+      foodCard,
+      trainingCard
+    }
   }
-}
 </script>
 
 <style>
@@ -98,6 +104,7 @@ export default {
   header p {
     padding: 0 1em;
   }
+
   .foods,
   .trainings {
     display: grid;
@@ -108,6 +115,7 @@ export default {
   .foods {
     border-right: 2px solid gray;
   }
+
   .all-cards {
     margin: 1em 0;
     display: grid;

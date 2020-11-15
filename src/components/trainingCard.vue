@@ -1,5 +1,5 @@
 <template>
-  <div v-if="trainingIndex>=0" class="training-card" @click="send(training)">
+  <div v-if="index>=0" class="training-card" @click="send(training)">
     <h3>{{training.name}}</h3>
     <p><img :src="'/images/' + training.pic " alt="training-pic" class="pic"></p>
     <p>Energy: {{ training.energy }}</p>
@@ -8,17 +8,20 @@
 
 <script>
 export default {
+  created(){
+      this.index = Math.floor(Math.random() * this.$store.state.trainings.length)
+  },
+
   computed: {
-    
-    trainingIndex(){
-        if (this.$store.state.trainings.length > 0) { 
-          let index = Math.floor(Math.random() * this.$store.state.trainings.length)
-          return index} else { return null}
-      },
       training(){
-        let card = this.$store.state.trainings.find(f => this.$store.state.trainings.indexOf(f) === this.trainingIndex)
+        let card = this.$store.state.trainings.find(t => this.$store.state.trainings.indexOf(t) === this.index)
         return card;
       },
+  },
+   data() {
+    return {
+      index: null
+    }
   },
   methods : {
     send(card){
@@ -28,6 +31,8 @@ export default {
       }
       else {
       this.$emit('clickCard', card) 
+      this.index = Math.floor(Math.random() * this.$store.state.trainings.length)
+
       }
       
     }

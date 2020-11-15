@@ -6,7 +6,7 @@
       <p>Health points : {{health}}</p>
       <p><button @click="restart()" class="restart"> Restart game </button></p>
     </header>
-    <section class="all-cards">
+    <section class="all-cards" v-if="!gameIsOver">
 
         <div class="foods" v-if="$store.state.foods.length>0">
             <foodCard @clickCard='changeStats'/>
@@ -17,6 +17,9 @@
             <trainingCard @clickCard='changeStats'/>
         </div>
 
+    </section>
+    <section v-else>
+      <p> Game is over! </p>
     </section>
     
 
@@ -29,7 +32,11 @@ import foodCard from '../components/foodCard'
 import trainingCard from '../components/trainingCard'
 
 export default {
-
+  data() { 
+    return{
+      gameIsOver: false
+    }
+  },
   computed: {
       energy (){
         return this.$store.state.energyPoints},
@@ -41,8 +48,7 @@ export default {
 
   },
   methods : {
-      changeStats: function (card) { 
-  
+      changeStats(card) { 
           if(this.counter < 5){
               this.$store.commit('change', card) 
               console.log(this.$store.state.energyPoints)
@@ -50,11 +56,16 @@ export default {
               console.log(this.$store.state.counter)
 
           } else {
-              this.restart()
+              this.gameOver()
           }
         }, 
-        restart: function () { 
-            this.$store.commit('restart')}
+        gameOver() {
+          this.gameIsOver = true
+        },
+        restart() { 
+          this.$store.commit('restart')
+          this.gameIsOver = false
+        }
 },
 
   name: 'Play',

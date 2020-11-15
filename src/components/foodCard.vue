@@ -16,7 +16,7 @@ export default {
       food(){
         let card = this.$store.state.foods.find
         (f => this.$store.state.foods.indexOf(f) === this.index)
-        return card;
+        return card
       },
   },
   data() {

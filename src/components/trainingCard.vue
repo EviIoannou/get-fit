@@ -32,7 +32,6 @@ export default {
       else {
       this.$emit('clickCard', card) 
       this.index = Math.floor(Math.random() * this.$store.state.trainings.length)
-
       }
       
     }

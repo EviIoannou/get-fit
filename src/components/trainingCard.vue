@@ -33,11 +33,8 @@ export default {
       this.$emit('clickCard', card) 
       this.index = Math.floor(Math.random() * this.$store.state.trainings.length)
       }
-      
-    }
-  },
-  name: 'trainingCard',
- 
- 
+    },
+    name: 'trainingCard'
+  }
 }
 </script>

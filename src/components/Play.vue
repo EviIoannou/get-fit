@@ -29,9 +29,6 @@
   import foodCard from '../components/foodCard'
   import trainingCard from '../components/trainingCard'
 
-import foodCard from '../components/foodCard'
-import trainingCard from '../components/trainingCard'
-
 export default {
   data() { 
     return{
